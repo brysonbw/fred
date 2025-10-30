@@ -73,10 +73,11 @@ export class MDNToggleSidebar extends L10nMixin(LitElement) {
     </mdn-button>`;
   }
 
-  firstUpdated() {
+  async firstUpdated() {
     // we have to do this here and immediately cause a re-render
     // as doing so in connectedCallback causes a hydration error:
     // https://github.com/lit/lit/issues/1434
+    await this.updateComplete;
     this._canClose = !this._isHidden(this._sidebar);
   }
 }

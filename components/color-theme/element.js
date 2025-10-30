@@ -98,13 +98,13 @@ export class MDNColorTheme extends L10nMixin(LitElement) {
     </div>`;
   }
 
-  firstUpdated() {
+  async firstUpdated() {
     // we have to do this here and immediately cause a re-render
     // as doing so in connectedCallback causes a hydration error:
     // https://github.com/lit/lit/issues/1434
 
     // this logic is also reflected in "/entry.inline.js"
-
+    await this.updateComplete;
     let mode;
     try {
       mode = localStorage.getItem("theme");

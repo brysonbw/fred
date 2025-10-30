@@ -100,7 +100,8 @@ export class MDNDropdown extends LitElement {
     this._setAriaAttributes();
   }
 
-  firstUpdated() {
+  async firstUpdated() {
+    await this.updateComplete;
     this.loaded = true;
   }
 
